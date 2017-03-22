@@ -13,7 +13,7 @@ export class Fav{
     test = "";
     icon = "ios-heart-outline";
 
-    alert(){
+    alerta(){
         if(this.test == ""){
             this.test = "primary";
             this.icon = "ios-heart"
@@ -23,8 +23,6 @@ export class Fav{
         }
 
         this.onFav.emit("Gracias por hacer fav");
-        
-        
 
     }
 }

@@ -23,7 +23,7 @@ export class HomePage {
   }
 
   onFav(response:string){
-    alert(response);
+    console.log(response);
   }
 
 }

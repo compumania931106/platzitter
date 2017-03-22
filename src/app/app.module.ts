@@ -12,6 +12,8 @@ import { VerNotificationPage } from '../pages/notification/verNotification';
 
 import { Fav } from '../components/fav/fav';
 
+import { UserService } from '../services/user.service';
+
 //Refacto por Router
 /*
 var links = [
@@ -45,6 +47,6 @@ var links = [
     VerNotificationPage,
     Fav
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, UserService]
 })
 export class AppModule {}
