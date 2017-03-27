@@ -6,6 +6,10 @@ import { AlertController, LoadingController, NavController } from 'ionic-angular
 
 import { UserService } from '../../services/user.service';
 
+import { DBService } from '../../services/db.services';
+
+import { Geolocation } from 'ionic-native';
+
 @Component({
     selector: 'page-login',
     templateUrl: 'login.html'
@@ -18,11 +22,27 @@ export class LoginPage{
         private alertCtrl:AlertController,
         public loadingCtrl:LoadingController,
         public navCtrl:NavController,
-        private userService:UserService){
+        private userService:UserService,
+        private dbService:DBService){
+            dbService.openDatabase();
+            dbService.createTable();
+            console.dir(dbService.getAll());
+
     }
 
-    ngOnInit(){
-        console.log('Arranco el init');
+ionViewWillEnter(){
+        console.log("arranco el init");
+        
+        Geolocation.getCurrentPosition().then(pos => {
+        console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
+        });
+
+        let watch = Geolocation.watchPosition().subscribe(pos => {
+        console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
+        });
+
+        // to stop watching
+        watch.unsubscribe();
     }
 
     login = ():void =>{

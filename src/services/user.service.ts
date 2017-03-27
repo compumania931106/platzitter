@@ -4,8 +4,18 @@ import { User } from '../commons/user';
 
 import { USERS } from './mocks/users';
 
+ //import { DBService } from './db.services';
+
 @Injectable()
 export class UserService{
+
+    /*
+    constructor(private dbService: DBService){
+        dbService.openDatabase();
+        dbService.createTable();
+    }
+    */
+
     getUsers():Promise<User[]>{
         console.log('entramos al promise');
         return Promise.resolve(USERS);

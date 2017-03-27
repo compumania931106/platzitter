@@ -6,6 +6,8 @@ import { Profile } from '../../commons/profile';
 
 import { twitt } from '../../commons/twitt';
 
+import { Camera } from 'ionic-native';
+
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html'
@@ -36,6 +38,22 @@ listado:Array<twitt> = [
 
   constructor(public navCtrl: NavController) {
 
+  }
+
+  foto():void{
+    Camera.getPicture({
+      quality:50,
+      destinationType: Camera.DestinationType.FILE_URI,
+      encodingType: Camera.EncodingType.JPEG,
+      mediaType: Camera.MediaType.PICTURE,
+      allowEdit:true,
+      correctOrientation:true
+    }).then(
+      (ImageData)=>{
+        let base64Image = 'data:image/base64,' + ImageData;
+    }, (err)=>{
+      //Manejar error
+    });
   }
 
 
